@@ -23,7 +23,7 @@
             left: 10px;
             padding-left: 150px;
             
-            animation: fadeIn 1s 1.7s backwards;
+            animation: fadeIn 1s 0.3s backwards;
         }
     
         &::after{
@@ -35,7 +35,7 @@
             margin-left: 18px;
             
 
-            animation: fadeIn 1s 1.7s backwards;
+            animation: fadeIn 1s 2.4s backwards;
     
         }
     }
@@ -47,7 +47,7 @@
         font-size: 20px;
         letter-spacing: 1px;
         font-family: 'Coolvetica';
-        animation: fadeIn 1s 1.8s backwards;
+        animation: fadeIn 1s 3s backwards;
     }
 
     .flat-button{
@@ -61,7 +61,7 @@
         border: 1px solid #eaca13;
         margin-top: 25px;
         float: left;
-        animation: fadeIn 1s 1.8s backwards;
+        animation: fadeIn 1s 3s backwards;
         white-space: nowrap;
 
         &:hover{
