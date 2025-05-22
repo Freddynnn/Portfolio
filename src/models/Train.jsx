@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 
-import trainScene from '../assets/3d/train.glb';
+import trainScene from '../assets/3d/Train.glb';
 
 const Train = ({ position, rotationSpeedRef, ...props }) => {
     const { scene } = useGLTF(trainScene);
