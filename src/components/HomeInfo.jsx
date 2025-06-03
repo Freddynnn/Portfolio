@@ -59,7 +59,7 @@ const renderContent = {
      />,
 
   7: <InfoBox 
-        text="Thanks for stopping by! I'm always building something new —     let's chat about future projects, roles, or collaboration opportunities." 
+        text="Thanks for stopping by! I'm always building something new — let's chat about future projects, roles, or collaboration opportunities." 
         link="/contact" 
         btnText="Contact Me" 
      />,
