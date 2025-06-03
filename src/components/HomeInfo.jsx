@@ -29,15 +29,42 @@ const InfoBox = ({ header, text, link, btnText, showSocials }) => (
 );
 
 const renderContent = {
-  0: <InfoBox header="WELCOME TO FREDDYTOWN" text="Feel free to grab / scroll to explore town!"/>,
-  1: <InfoBox header="" text="my software dev journey got kick-started at Melbourne High school " link="" btnText=""/>,
-  2: <InfoBox header="" text="From writing simple scripts at MHS to building full-stack apps today, my software dev journey has always been driven by curiosity and continuous learning." link="" btnText=""/>,
-  3: <InfoBox header="" text="I received my BSc (Computing & Software Systems), at the University of Melbourne, throughout which I developed various independent projects:"/>,
-  4: <InfoBox header="STARMAP" text="My first solo fullstack Web App - here users design and develop custom constellations and show them off on their own 'night sky' home page" link="https://github.com/Freddynnn/StarMap" btnText="Check it out here!" />,
-  5: <InfoBox header="You Dropped This, Human (YDTH)" text="Developing fun continued with this beach cleaning 3D unity game, fitted with Multiplayer to boot! " link="https://github.com/joxanna/metal-detecting" btnText="Check it out here!" />,
-  6: <InfoBox header="SCprojector" text="My most recent project: an actively managed Fantasy football price projection web browser extension. Currently sitting at over 1000 concurrent users and growing!" link="https://github.com/Freddynnn/SCprojector" btnText="Check it out here!" />,
-  7: <InfoBox text="I'm always tinkering away at something new and looking forward to future endeavours, feel free to reach out  here !!"link="/contact" btnText="Contact Me"/>
+  0: <InfoBox header="WELCOME TO FREDDYTOWN" text="Scroll through to explore highlights of my journey as a developer—projects, skills, and a love for learning."/>,
+
+  1: <InfoBox header="" text="My software development journey began at Melbourne High School, where I first discovered the joy of building with code."/>,
+
+  2: <InfoBox header="" text="From simple scripts to full-stack web apps, my passion for tech has grown through curiosity, hands-on projects, and continuous learning."/>,
+
+  3: <InfoBox header="" text="I earned my BSc in Computing & Software Systems at the University of Melbourne, where I built everything from solo projects to real-world client systems."/>,
+
+  4: <InfoBox 
+        header="STARMAP" 
+        text="My first solo full-stack app: users create & showcase custom constellations on their personal night skies. Built with the MERN stack." 
+        link="https://github.com/Freddynnn/StarMap" 
+        btnText="Check it out here!" 
+     />,
+
+  5: <InfoBox 
+        header="You Dropped This, Human (YDTH)" 
+        text="A multiplayer beach-cleaning 3D Unity game made for fun—and impact! Developed in a team and published on GitHub." 
+        link="https://github.com/joxanna/metal-detecting" 
+        btnText="Check it out here!" 
+     />,
+
+  6: <InfoBox 
+        header="SCprojector" 
+        text="A fantasy football browser extension with 1,000+ users. Built independently with live price projections, GitHub Actions CI/CD & automated scraping." 
+        link="https://github.com/Freddynnn/SCprojector" 
+        btnText="Check it out here!" 
+     />,
+
+  7: <InfoBox 
+        text="Thanks for stopping by! I'm always building something new —     let's chat about future projects, roles, or collaboration opportunities." 
+        link="/contact" 
+        btnText="Contact Me" 
+     />,
 };
+
 
 const HomeInfo = ({ currentStage }) => {
     console.log('currentStage: ', currentStage);
