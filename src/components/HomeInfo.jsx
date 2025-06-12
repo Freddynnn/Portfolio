@@ -1,5 +1,7 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+
 
 const InfoBox = ({ header, text, link, btnText, showSocials }) => (
   <div className='info-box text-center'>
@@ -7,10 +9,17 @@ const InfoBox = ({ header, text, link, btnText, showSocials }) => (
     <h2 className='text-l font-medium '>{text}</h2>
     
     {link && btnText && (
-      <a href={link} className='btn' target='_blank' rel='noopener noreferrer'>
-        {btnText}
-      </a>
+      link.startsWith('http') ? (
+        <a href={link} className='btn' target='_blank' rel='noopener noreferrer'>
+          {btnText}
+        </a>
+      ) : (
+        <NavLink to={link} className='btn'>
+          {btnText}
+        </NavLink>
+      )
     )}
+
 
     {/* {showSocials && (
       <div className='flex justify-center gap-9 mt-3'>

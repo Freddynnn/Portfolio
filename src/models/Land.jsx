@@ -35,50 +35,95 @@ export function Land({ isRotating, setIsRotating, currentStage, setCurrentStage,
     const [touchEnabled, setTouchEnabled] = useState(false);
     const touchTimeoutRef = useRef(null);
 
+    // Add this new useEffect specifically for touch initialization
     useEffect(() => {
-        // Enable touch interactions after a 2-second delay
-        // enableTouchAfterDelay(0);
-        enableTouchAfterDelay(3500);
+        // console.log('Component mounted, initializing touch state');
+        setTouchEnabled(false);
+        enableTouchAfterDelay();
         
+        return () => {
+            if (touchTimeoutRef.current) {
+                // console.log('Cleanup: clearing touch timeout on unmount');
+                clearTimeout(touchTimeoutRef.current);
+            }
+        };
+    }, []); // Empty dependency array - runs only on mount/unmount
+
+    // Keep your existing useEffect for materials and other setup
+    useEffect(() => {
+        // console.log('Land component mounted/re-mounted');
+        // console.log(`Initial touchEnabled state: ${touchEnabled}`);
+        
+        // Reset touch state and re-enable after delay
+        // console.log('Explicitly setting touchEnabled to false');
+        setTouchEnabled(false);
+        
+        // Small delay to ensure state update, then start the enable timer
+        setTimeout(() => {
+            // console.log('Starting enableTouchAfterDelay');
+            enableTouchAfterDelay(3500); // Delay in ms
+        }, 100);
+
+        // Set material color overrides
         const colorOverrides = {
-            Island: new Color(0.06, 0.1, 0.06), 
-            UNI_Grass: new Color(0.06, 0.1, 0.06), 
+            Island: new Color(0.06, 0.1, 0.06),
+            UNI_Grass: new Color(0.06, 0.1, 0.06),
             Road: new Color(0.15, 0.15, 0.15),
             Oval_Roof: new Color(0.5, 0.1, 0.1),  
             // MHS_Windows: new Color(0.1, 0.4, 0.5),      
         };
-        
+       
         Object.entries(colorOverrides).forEach(([name, color]) => {
             if (materials[name]?.color) {
-            materials[name].color.copy(color);
+                materials[name].color.copy(color);
             }
         });
 
-        // Initial auto-spin logic  
+        // Initial auto-spin
         rotationSpeed.current = -0.001;
 
         const timeout = setTimeout(() => {
             dampingFactorRef.current = 0.985;
         }, 3000);
 
-        return () => clearTimeout(timeout);
+        return () => {
+            // console.log('Land component cleanup');
+            clearTimeout(timeout);
+            if (touchTimeoutRef.current) {
+                // console.log(' Clearing touchTimeout in cleanup');
+                clearTimeout(touchTimeoutRef.current);
+                touchTimeoutRef.current = null;
+            }
+        };
+    }, [materials]);
 
-
-    }, [materials, setIsRotating]);
+    useEffect(() => {
+        console.log(`touchEnabled changed: ${touchEnabled}`);
+    }, [touchEnabled]);
 
     // Function to enable touch interactions after a delay
     const enableTouchAfterDelay = (duration) => {
+        // console.log(' enableTouchAfterDelay called');
+        // console.log(`Setting timeout for ${duration}ms`);
+        // console.log(`Current touchTimeoutRef.current: ${touchTimeoutRef.current}`);
+
         // Clear any existing timeout
         if (touchTimeoutRef.current) {
             clearTimeout(touchTimeoutRef.current);
         }
-        
+
         // Set a timeout to enable touch after the specified duration
         touchTimeoutRef.current = setTimeout(() => {
-            setTouchEnabled(true);
+            
+            // Use functional update to avoid stale closure issues
+            setTouchEnabled(prevState => {
+                return true;
+            });
+            
             touchTimeoutRef.current = null;
-        }, duration);
+        }, duration);        
     };
+    
       
     // MOUSE/POINTER TOUCH LOGIC
     const handlePointerDown = (event) => {
